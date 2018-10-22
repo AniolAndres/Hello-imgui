@@ -1,0 +1,2 @@
+﻿  ModuleImgui.cpp
+c:\users\aniolg\desktop\nueva carpeta\hello triangle\ht2\hello-triangle-master\moduleimgui.cpp(19): error C3861: 'gl3wInit': identifier not found
