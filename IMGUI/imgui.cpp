@@ -5213,7 +5213,9 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
             {
                 // Late create viewport, based on the assumption that with our calculations, the DPI will be known ahead (same as the DPI of the selection done in UpdateSelectWindowViewport)
                 //ImGuiViewport* old_viewport = window->Viewport;
-                ImGuiViewportFlags viewport_flags = ImGuiViewportFlags_NoFocusOnAppearing | ((window->Flags & ImGuiWindowFlags_NoInputs) ? ImGuiViewportFlags_NoInputs : 0);
+                ImGuiViewportFlags viewport_flags = ImGuiViewportFlags_NoFocusOnAppearing;
+                if ((window->Flags & ImGuiWindowFlags_NoMouseInputs) && (window->Flags & ImGuiWindowFlags_NoNavInputs))
+                    viewport_flags |= ImGuiViewportFlags_NoInputs;
                 window->Viewport = AddUpdateViewport(window, window->ID, window->Pos, window->Size, viewport_flags);
 
                 // FIXME-DPI
@@ -12357,9 +12359,13 @@ static void DockSettingsHandler_DockNodeToSettings(ImGuiDockContext* dc, ImGuiDo
 
 static void ImGui::DockSettingsHandler_WriteAll(ImGuiContext* ctx, ImGuiSettingsHandler* handler, ImGuiTextBuffer* buf)
 {
+    ImGuiContext& g = *ctx;
+    ImGuiDockContext* dc = g.DockContext;
+    if (!(g.IO.ConfigFlags & ImGuiConfigFlags_DockingEnable))
+        return;
+
     // Gather settings data
     // (unlike our windows settings, because nodes are always built we can do a full rewrite of the SettingsNode buffer)
-    ImGuiDockContext* dc = ctx->DockContext;
     dc->SettingsNodes.resize(0);
     dc->SettingsNodes.reserve(dc->Nodes.Data.Size);
     for (int n = 0; n < dc->Nodes.Data.Size; n++)
@@ -12772,8 +12778,6 @@ static void SettingsHandlerWindow_WriteAll(ImGuiContext* imgui_ctx, ImGuiSetting
     // Gather data from windows that were active during this session
     // (if a window wasn't opened in this session we preserve its settings)
     ImGuiContext& g = *imgui_ctx;
-    if (!(g.IO.ConfigFlags & ImGuiConfigFlags_DockingEnable))
-        return;
     for (int i = 0; i != g.Windows.Size; i++)
     {
         ImGuiWindow* window = g.Windows[i];

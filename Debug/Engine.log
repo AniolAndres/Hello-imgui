@@ -1,2 +1,50 @@
-﻿  ModuleImgui.cpp
-c:\users\aniolg\desktop\nueva carpeta\hello triangle\ht2\hello-triangle-master\moduleimgui.cpp(19): error C3861: 'gl3wInit': identifier not found
+﻿  Application.cpp
+  log.cpp
+  Main.cpp
+  LCG.cpp
+  AABB.cpp
+  Capsule.cpp
+  Circle.cpp
+  Cone.cpp
+  Cylinder.cpp
+  Frustum.cpp
+  Line.cpp
+  LineSegment.cpp
+  OBB.cpp
+  Plane.cpp
+  Polygon.cpp
+  Polyhedron.cpp
+  Ray.cpp
+  Sphere.cpp
+  Triangle.cpp
+  TriangleMesh.cpp
+  Generando código...
+  Compilando...
+  BitOps.cpp
+  float2.cpp
+  float3.cpp
+  float3x3.cpp
+  float3x4.cpp
+  float4.cpp
+  float4x4.cpp
+  MathFunc.cpp
+  MathLog.cpp
+  MathOps.cpp
+  Polynomial.cpp
+  Quat.cpp
+  SSEMath.cpp
+  TransformOps.cpp
+  Clock.cpp
+  ModuleImgui.cpp
+  ModuleInput.cpp
+  ModuleProgram.cpp
+  ModuleRender.cpp
+  ModuleRenderExercise.cpp
+  Generando código...
+  Compilando...
+  ModuleTextures.cpp
+  ModuleWindow.cpp
+  Generando código...
+ModuleImgui.obj : error LNK2019: símbolo externo "struct ImGuiContext * __cdecl ImGui::CreateContext(struct ImFontAtlas *)" (?CreateContext@ImGui@@YAPAUImGuiContext@@PAUImFontAtlas@@@Z) sin resolver al que se hace referencia en la función "public: virtual bool __thiscall ModuleImgui::Init(void)" (?Init@ModuleImgui@@UAE_NXZ)
+ModuleImgui.obj : error LNK2019: símbolo externo "bool __cdecl ImGui::DebugCheckVersionAndDataLayout(char const *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)" (?DebugCheckVersionAndDataLayout@ImGui@@YA_NPBDIIIII@Z) sin resolver al que se hace referencia en la función "public: virtual bool __thiscall ModuleImgui::Init(void)" (?Init@ModuleImgui@@UAE_NXZ)
+C:\Deures MVJ\hello triangle\Hello-triangle-master\Debug\Engine - Master 1.exe : fatal error LNK1120: 2 externos sin resolver
